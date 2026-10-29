@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+:root {
+    /* Цветовые токены дизайн-системы */
+    --color-bg: #313642;
+    --color-bg-deep: #272b35;
+    --color-surface: #404655;
+    --color-surface-alt: #4a5060;
+    --color-primary: #5cbbf1;
+    --color-accent: #cdff08;
+    --color-text: #ffffff;
+    --color-text-secondary: #adb5c4;
+    --color-text-muted: #6b7587;
+    --color-success: #22d38a;
+    --color-warning: #f59e0b;
+    --color-error: #f04444;
+
+    /* Типографика */
+    --font-heading: 'JetBrains Mono', monospace;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg-deep);
+    color: var(--color-text);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}

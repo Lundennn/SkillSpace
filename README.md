@@ -1,20 +1,105 @@
-<<<<<<< HEAD
-# React + Vite
+# SkillSpace — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Клиентская часть образовательной платформы **«СкиллСпейс»**. Проект построен на масштабируемой компонентной архитектуре (собственный UI Kit + переиспользуемые шаблоны страниц) с использованием семантической и адаптивной вёрстки по дизайн-макетам.
 
-Currently, two official plugins are available:
+## Стек технологий
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **Фреймворк:** React.js (функциональные компоненты, хуки `useState`)
+* **Маршрутизация:** React Router (`react-router-dom`)
+* **Сборщик:** Vite
+* **Разметка и стили:** Семантический HTML5 (`<header>`, `<main>`, `<section>`, `<footer>`), CSS3 (Grid, Flexbox, CSS Custom Properties, медиазапросы)
+* **Контроль качества кода:** ESLint
 
-## React Compiler
+## Реализованный функционал и архитектура
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Страницы авторизации:**
+    * `/register` — страница регистрации нового профиля с проверкой согласия на обработку данных.
+    * `/login` — страница входа в личный кабинет с опцией запоминания устройства и ссылкой восстановления пароля.
+* **Модульный UI Kit (`src/components/ui/`):**
+    * `Input` — текстовые поля и поля пароля с переключателем видимости, поддержкой подсказок и состояний ошибки.
+    * `Button` — универсальные кнопки с вариантами оформления (`accent`, `primary`, `social`).
+    * `Checkbox` — кастомный стилизованный чекбокс.
+    * `Icon` — единый каталог контурных SVG-иконок (`16×16`, `stroke: 1.4`, `round`).
+* **Шаблоны каркаса (`src/components/layout/`):**
+    * `AuthLayout` — переиспользуемый двухколоночный макет с шапкой, бренд-логотипом, декоративным векторным графиком и слотом под формы.
+* **Адаптивная вёрстка:** Корректное отображение интерфейса на десктопах, планшетах (`@media max-width: 992px`) и мобильных устройствах (`@media max-width: 480px`).
 
-## Expanding the ESLint configuration
+## Дизайн-система и CSS-токены
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# SkillSpace
->>>>>>> 761d80af720fcba67f902c4c47bc72392d9b1071
+Все глобальные переменные вынесены в `:root` внутри `src/index.css`:
+
+* **Типографика:**
+    * Заголовки и метки (`--font-heading`) — `JetBrains Mono` (500, 600, 700)
+    * Основной текст и поля форм (`--font-body`) — `Inter` (400, 500, 600)
+* **Цветовая палитра:**
+    * `--color-bg`: `#313642` — основной фон страницы
+    * `--color-bg-deep`: `#272b35` — глубокий фон (шапка и секция формы)
+    * `--color-surface`: `#404655` — поверхность карточек и полей ввода
+    * `--color-surface-alt`: `#4a5060` — границы и разделители
+    * `--color-primary`: `#5CBBF1` — основной интерактивный цвет и ссылки
+    * `--color-accent`: `#CDFF08` — акцентный цвет для выделений и кнопок CTA
+    * `--color-text`: `#ffffff` — основной текст
+    * `--color-text-secondary`: `#adb5c4` — вторичный вспомогательный текст
+    * `--color-text-muted`: `#6b7587` — приглушённый текст (подписи, метки, плейсхолдеры)
+    * `--color-success`: `#22d38a` — положительные состояния
+    * `--color-warning`: `#f59e0b` — состояния внимания
+    * `--color-error`: `#f04444` — ошибки и деструктивные действия
+
+## Структура проекта
+
+```text
+skillspace/
+├── public/
+│   └── favicon.svg                 # Иконка вкладки браузера в фирменных цветах
+├── src/
+│   ├── assets/                     # Медиафайлы и изображения проекта
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── AuthLayout.css      # Стили каркаса страниц авторизации
+│   │   │   └── AuthLayout.jsx      # Шапка и промо-секция с графиком
+│   │   └── ui/
+│   │       ├── Button.css          # Стили кнопок
+│   │       ├── Button.jsx          # Компонент кнопки
+│   │       ├── Checkbox.css        # Стили чекбокса
+│   │       ├── Checkbox.jsx        # Компонент чекбокса
+│   │       ├── Icon.jsx            # Каталог SVG-иконок
+│   │       ├── Input.css           # Стили полей ввода
+│   │       └── Input.jsx           # Поле ввода с показом/скрытием пароля
+│   ├── pages/
+│   │   ├── LoginPage/
+│   │   │   └── LoginPage.jsx       # Страница «Вход в аккаунт»
+│   │   └── RegisterPage/
+│   │       └── RegisterPage.jsx    # Страница «Регистрация»
+│   ├── App.jsx                     # Настройка маршрутизации (React Router)
+│   ├── index.css                   # Глобальные CSS-токены (:root) и сброс стилей
+│   └── main.jsx                    # Точка входа React-приложения
+├── index.html                      # Главный HTML-документ (lang="ru")
+├── package.json                    # Зависимости и скрипты проекта
+└── vite.config.js                  # Конфигурация сборщика Vite
+```
+
+## Установка и запуск проекта
+
+Для локального запуска необходим установленный **Node.js** (версии 18 или выше) и **Git**.
+
+1. Клонируйте репозиторий:
+   ```bash
+   git clone [https://github.com/ваш-логин/skillspace.git](https://github.com/ваш-логин/skillspace.git)
+   cd skillspace
+   ```
+
+2. Установите зависимости:
+   ```bash
+   npm install
+   ```
+
+3. Запустите сервер для разработки:
+   ```bash
+   npm run dev
+   ```
+   После запуска проект будет доступен в браузере по адресу `http://localhost:5173/`.
+
+4. Сборка проекта для продакшена:
+   ```bash
+   npm run build
+   ```
