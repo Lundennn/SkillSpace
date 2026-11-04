@@ -1,0 +1,190 @@
+.centered-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg);
+    background-image: radial-gradient(
+            circle at 12% 88%,
+            rgba(205, 255, 8, 0.08) 0%,
+            transparent 45%
+    ),
+    radial-gradient(
+            circle at 92% 35%,
+            rgba(92, 187, 241, 0.08) 0%,
+            transparent 45%
+    );
+}
+
+.centered-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+}
+
+.centered-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.centered-page-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.centered-page-title {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text);
+}
+
+.centered-page-title-accent {
+    color: var(--color-accent);
+}
+
+.centered-page-subtitle {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.centered-card {
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-surface-alt);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* Переиспользуемые стили для карточек подтверждения почты */
+.confirm-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.confirm-card-badge {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+}
+
+.confirm-card-title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+}
+
+.confirm-card-subtitle {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.confirm-card-email {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.confirm-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background-color: rgba(92, 187, 241, 0.1);
+    border: 1px solid rgba(92, 187, 241, 0.25);
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.confirm-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.confirm-card-footer {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-surface);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.confirm-footer-question {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.confirm-resend-btn {
+    background: transparent;
+    border: none;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.confirm-resend-btn:hover {
+    text-decoration: underline;
+}
+
+/* Стили для карточки успешного подтверждения (EmailConfirmationSuccessful) */
+.success-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 12px 0;
+}
+
+.success-icon-circle {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-bg-deep);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.success-card-description {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    max-width: 340px;
+    margin-bottom: 28px;
+}
+
+@media (max-width: 576px) {
+    .centered-card {
+        padding: 28px 20px;
+    }
+
+    .centered-page-title {
+        font-size: 24px;
+    }
+
+    .confirm-card-title {
+        font-size: 20px;
+    }
+}

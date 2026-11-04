@@ -1,0 +1,93 @@
+.two-factor-qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.two-factor-qr-box {
+    width: 148px;
+    height: 148px;
+    border-radius: 16px;
+    background-color: var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+
+.two-factor-qr-caption {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.two-factor-secret-box {
+    margin-top: 16px;
+    margin-bottom: 28px;
+    height: 46px;
+    padding: 0 16px;
+    border-radius: 12px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-surface-alt);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.two-factor-secret-code {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    color: var(--color-text);
+    letter-spacing: 0.04em;
+}
+
+.two-factor-copy-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.two-factor-copy-btn:hover {
+    text-decoration: underline;
+}
+
+.two-factor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.two-factor-form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.two-factor-form-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.two-factor-form-subtitle {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.two-factor-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--color-text-muted);
+}

@@ -20,7 +20,7 @@ export const LoginPage = () => {
     <AuthLayout
       promoBadge="ПРОДОЛЖИТЕ СВОЙ ПУТЬ"
       promoTitle="С возвращением"
-      promoAccent="к вашей цели."
+      promoAccent="к вашей цели"
       promoDescription="Ваш маршрут, прогресс и рекомендации сохранены. Войдите, чтобы продолжить с текущего этапа."
       formBadge="ЛИЧНЫЙ КАБИНЕТ"
       formTitle="Вход в аккаунт"

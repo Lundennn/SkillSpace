@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/layout/AuthLayout';
 import { Input } from '../../components/ui/Input';
 import { Checkbox } from '../../components/ui/Checkbox';
@@ -9,18 +10,19 @@ export const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!acceptedTerms) return;
-    console.log('Register:', { email, password, acceptedTerms });
+    navigate('/email-confirm-start');
   };
 
   return (
     <AuthLayout
       promoBadge="НАЧНИТЕ КАРЬЕРНЫЙ МАРШРУТ"
       promoTitle="Профессия ближе,"
-      promoAccent="чем кажется."
+      promoAccent="чем кажется"
       promoDescription="Создайте профиль, выберите профессию и получите персональный план развития компетенций."
       formBadge="НОВЫЙ ПРОФИЛЬ"
       formTitle="Регистрация"
