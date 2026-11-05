@@ -37,20 +37,22 @@ export const TwoFactorPage = () => {
       backText="Ко входу"
       backTo="/login"
       pageTitle="Двухэтапная"
-      pageTitleAccent="аутентификацияы"
+      pageTitleAccent="аутентификация"
       pageSubtitle="Добавьте аккаунт в приложение-аутентификатор, затем введите код для проверки."
       cardMaxWidth="640px"
     >
       {/* Блок с QR-кодом */}
       <div className="two-factor-qr-section">
         <div className="two-factor-qr-box" aria-hidden="true">
-          {/* Убираем длинный тег <svg> и вставляем картинку */}
           <img
             src={qrCodeImg}
             alt="QR-код для настройки 2FA"
-            width="124"
-            height="124"
-            style={{ display: 'block' }}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              display: 'block'
+            }}
           />
         </div>
         <p className="two-factor-qr-caption">Отсканируйте QR-код</p>
