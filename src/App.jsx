@@ -1,8 +1,7 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
-import { EmailConfirmStartPage } from './pages/EmailConfirmStart/EmailConfirmStartPage';
-import { EmailConfirmEndPage } from './pages/EmailConfirmEnd/EmailConfirmEndPage';
+import { EmailConfirmPage } from './pages/EmailConfirm/EmailConfirmPage';
 import { EmailConfirmationSuccessfulPage } from './pages/EmailConfirmationSuccessful/EmailConfirmationSuccessfulPage';
 import { TwoFactorPage } from './pages/TwoFactorPage/TwoFactorPage';
 
@@ -17,13 +16,15 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
 
         {/* Подтверждение почты и 2FA */}
-        <Route path="/email-confirm-start" element={<EmailConfirmStartPage />} />
-        <Route path="/email-confirm-end" element={<EmailConfirmEndPage />} />
+        <Route path="/email-confirm" element={<EmailConfirmPage />} />
         <Route
           path="/email-confirmed"
           element={<EmailConfirmationSuccessfulPage />}
         />
         <Route path="/2fa" element={<TwoFactorPage />} />
+
+        {/* Защитный редирект для несуществующих маршрутов */}
+        <Route path="*" element={<Navigate to="/register" replace />} />
       </Routes>
     </HashRouter>
   );

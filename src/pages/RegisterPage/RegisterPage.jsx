@@ -15,7 +15,7 @@ export const RegisterPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!acceptedTerms) return;
-    navigate('/email-confirm-start');
+    navigate('/email-confirm');
   };
 
   return (

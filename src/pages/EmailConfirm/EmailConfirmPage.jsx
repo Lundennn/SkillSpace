@@ -5,8 +5,8 @@ import { CodeInput } from '../../components/ui/CodeInput';
 import { Button } from '../../components/ui/Button';
 import { Icon } from '../../components/ui/Icon';
 
-export const EmailConfirmStartPage = ({ initialCode = '' }) => {
-  const [code, setCode] = useState(initialCode);
+export const EmailConfirmPage = () => {
+  const [code, setCode] = useState('');
   const navigate = useNavigate();
   const isCodeComplete = code.length === 6;
 
@@ -53,7 +53,7 @@ export const EmailConfirmStartPage = ({ initialCode = '' }) => {
         <button
           type="button"
           className="confirm-resend-btn"
-          onClick={() => setCode('482910')}
+          onClick={() => setCode('')}
         >
           Отправить повторно
         </button>

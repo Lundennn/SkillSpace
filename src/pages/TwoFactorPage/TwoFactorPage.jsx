@@ -6,6 +6,8 @@ import { Button } from '../../components/ui/Button';
 import { Icon } from '../../components/ui/Icon';
 import './TwoFactorPage.css';
 
+import qrCodeImg from '../../assets/qr-code.svg';
+
 const SECRET_KEY = 'TRAE-K7QP-M4VX-2B6D';
 
 export const TwoFactorPage = () => {
@@ -35,37 +37,21 @@ export const TwoFactorPage = () => {
       backText="Ко входу"
       backTo="/login"
       pageTitle="Двухэтапная"
-      pageTitleAccent="аутентификация."
+      pageTitleAccent="аутентификацияы"
       pageSubtitle="Добавьте аккаунт в приложение-аутентификатор, затем введите код для проверки."
       cardMaxWidth="640px"
     >
       {/* Блок с QR-кодом */}
       <div className="two-factor-qr-section">
         <div className="two-factor-qr-box" aria-hidden="true">
-          <svg viewBox="0 0 120 120" width="124" height="124" fill="#272b35">
-            {/* Верхний левый квадрат */}
-            <path d="M10 10h36v36H10V10zm6 6v24h24V16H16zm6 6h12v12H22V22z" />
-            {/* Верхний правый квадрат */}
-            <path d="M74 10h36v36H74V10zm6 6v24h24V16H80zm6 6h12v12H86V22z" />
-            {/* Нижний левый квадрат */}
-            <path d="M10 74h36v36H10V74zm6 6v24h24V80H16zm6 6h12v12H22V86z" />
-            {/* Паттерн данных */}
-            <rect x="54" y="10" width="6" height="12" />
-            <rect x="54" y="28" width="12" height="6" />
-            <rect x="48" y="40" width="6" height="6" />
-            <rect x="10" y="54" width="12" height="6" />
-            <rect x="28" y="52" width="12" height="12" rx="2" />
-            <rect x="48" y="52" width="12" height="12" rx="2" />
-            <rect x="68" y="52" width="12" height="12" rx="2" />
-            <rect x="88" y="52" width="12" height="12" rx="2" />
-            <rect x="104" y="54" width="6" height="12" />
-            <rect x="54" y="74" width="6" height="24" />
-            <rect x="66" y="74" width="18" height="18" rx="3" />
-            <rect x="90" y="74" width="18" height="18" rx="3" />
-            <rect x="66" y="98" width="6" height="12" />
-            <rect x="78" y="104" width="12" height="6" />
-            <rect x="96" y="98" width="14" height="12" />
-          </svg>
+          {/* Убираем длинный тег <svg> и вставляем картинку */}
+          <img
+            src={qrCodeImg}
+            alt="QR-код для настройки 2FA"
+            width="124"
+            height="124"
+            style={{ display: 'block' }}
+          />
         </div>
         <p className="two-factor-qr-caption">Отсканируйте QR-код</p>
       </div>
