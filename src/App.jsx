@@ -1,4 +1,5 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { LandingPage } from './pages/LandingPage/LandingPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { EmailConfirmPage } from './pages/EmailConfirm/EmailConfirmPage';
@@ -9,7 +10,7 @@ function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/register" replace />} />
+        <Route path="/" element={<LandingPage />} />
 
         {/* Вход и регистрация */}
         <Route path="/register" element={<RegisterPage />} />

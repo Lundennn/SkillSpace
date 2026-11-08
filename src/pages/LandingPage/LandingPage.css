@@ -1,0 +1,80 @@
+.landing {
+  min-height: 100vh;
+  padding-bottom: 112px;
+  background:
+    radial-gradient(ellipse at 76% 30%, #354757 0, transparent 33%),
+    radial-gradient(ellipse at 20% 75%, #424b34 0, transparent 22%),
+    var(--color-bg);
+}
+
+.landing-hero {
+  display: grid;
+  grid-template-columns: 0.94fr 1fr;
+  align-items: center;
+  padding-block: 76px 120px;
+}
+
+.landing-kicker,
+.landing-cta > p {
+  margin-bottom: 30px;
+  font: 600 14px var(--font-heading);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.landing-kicker { color: var(--color-primary); }
+.landing-kicker::before {
+  content: '•';
+  margin-right: 8px;
+  color: var(--color-accent);
+  text-shadow: 0 0 8px var(--color-accent);
+}
+
+.landing h1,
+.landing-cta h2 {
+  font: 700 clamp(32px, 4.2vw, 56px)/.99 var(--font-heading);
+  letter-spacing: -.055em;
+}
+
+.landing h1 em { color: var(--color-accent); font-style: normal; }
+.landing-description { max-width: 555px; margin: 32px 16px 26px 0; color: var(--color-text-secondary); font-size: 18px; }
+.landing-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.landing-actions small { color: var(--color-text-secondary); font: 500 10px var(--font-heading); }
+
+.landing-illustration {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 32px;
+}
+
+.landing-cta {
+  margin-bottom: 60px;
+  padding: 52px 48px 62px;
+  border-radius: 30px;
+  background: radial-gradient(circle at 87% 77%, transparent 0 26%, #b9e802 26% 31%, #c2f205 31% 36%, transparent 36%), var(--color-accent);
+  color: var(--color-bg-deep);
+}
+
+.landing-cta h2 { margin-bottom: 40px; font-size: clamp(30px, 4vw, 52px); }
+
+@media (max-width: 850px) {
+  .landing { padding-bottom: 60px; }
+  .landing-hero { grid-template-columns: 1fr; padding: 32px 12px 36px; }
+  .landing-kicker, .landing-cta > p { margin-bottom: 16px; font-size: 11px; }
+  .landing h1 { font-size: clamp(27px, 7vw, 38px); line-height: 1.06; }
+  .landing-description { margin: 14px 0 18px; max-width: 365px; font-size: 14px; }
+  .landing-illustration { display: none; }
+  .landing-actions { align-items: flex-start; flex-direction: column; gap: 7px; }
+  .landing-actions small { padding: 6px 12px 0; }
+  .landing-cta { margin-bottom: 28px; padding: 20px 24px; border-radius: 26px; }
+  .landing-cta h2 { margin-bottom: 18px; font-size: clamp(22px, 5.7vw, 30px); line-height: 1.15; }
+  .landing .site-pill { padding: 12px 18px; }
+}
+
+@media (min-width: 600px) and (max-width: 850px) {
+  .landing-hero { padding-block: 48px; }
+  .landing-description { max-width: 490px; }
+  .landing-actions { flex-direction: row; align-items: center; gap: 12px; }
+  .landing-actions small { padding: 0; }
+}

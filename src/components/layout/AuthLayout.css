@@ -256,7 +256,7 @@
     .auth-promo {
         border-right: none;
         border-bottom: 1px solid var(--color-surface-alt);
-        padding: 48px 24px 0;
+        padding: 32px 24px 0;
     }
     .auth-promo__title {
         font-size: 36px;
@@ -264,11 +264,32 @@
     .auth-promo__chart {
         width: calc(100% + 48px);
         margin-left: -24px;
-        height: 180px;
+        height: 96px;
     }
 }
 
 @media (max-width: 480px) {
+    .auth-promo {
+        padding: 24px 20px;
+    }
+
+    .auth-promo .section-badge {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    .auth-promo__title {
+        margin-bottom: 12px;
+    }
+
+    .auth-promo__description {
+        font-size: 15px;
+    }
+
+    .auth-promo__chart {
+        display: none;
+    }
+
     .back-button span {
         display: none;
     }
