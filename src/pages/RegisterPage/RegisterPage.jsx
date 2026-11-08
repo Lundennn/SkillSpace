@@ -1,3 +1,4 @@
+import { startRegistration } from '../../auth/api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/layout/AuthLayout';
@@ -12,10 +13,25 @@ export const RegisterPage = () => {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!acceptedTerms) return;
-    navigate('/email-confirm');
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (pending || !acceptedTerms) return;
+    setPending(true);
+    setError('');
+    try {
+      const address = email.trim();
+      const challenge = await startRegistration(address, password);
+      navigate('/email-confirm', {
+        state: { ...challenge, email: address, purpose: 'registration' },
+      });
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setPending(false);
+    }
   };
 
   return (
@@ -31,7 +47,7 @@ export const RegisterPage = () => {
       footerLinkText="Войти"
       footerLinkTo="/login"
     >
-      <form className="auth-form" onSubmit={handleSubmit} noValidate>
+      <form className="auth-form" onSubmit={handleSubmit}>
         <Input
           id="register-email"
           label="ЭЛЕКТРОННАЯ ПОЧТА"
@@ -47,8 +63,9 @@ export const RegisterPage = () => {
           id="register-password"
           label="ПАРОЛЬ"
           type="password"
-          placeholder="Не менее 8 символов"
-          minLength={8}
+          placeholder="Не менее 12 символов"
+          minLength={12}
+          maxLength={128}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -62,7 +79,8 @@ export const RegisterPage = () => {
           required
         />
 
-        <Button type="submit" variant="accent">
+        {error && <p className="form-error-text" role="alert">{error}</p>}
+        <Button type="submit" variant="accent" disabled={pending}>
           <span>Создать аккаунт</span>
           <Icon name="arrow-right" size={16} />
         </Button>
@@ -71,7 +89,7 @@ export const RegisterPage = () => {
           <span>ИЛИ</span>
         </div>
 
-        <Button type="button" variant="social">
+        <Button type="button" variant="social" disabled>
           <span className="google-icon" aria-hidden="true">G</span>
           <span>Продолжить с Google</span>
         </Button>

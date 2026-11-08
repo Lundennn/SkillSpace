@@ -1,19 +1,35 @@
+import { startLogin } from '../../auth/api';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/layout/AuthLayout';
 import { Input } from '../../components/ui/Input';
-import { Checkbox } from '../../components/ui/Checkbox';
 import { Button } from '../../components/ui/Button';
 import { Icon } from '../../components/ui/Icon';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Login:', { email, password, rememberMe });
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (pending) return;
+    setPending(true);
+    setError('');
+    try {
+      const address = email.trim();
+      const challenge = await startLogin(address, password);
+      navigate('/email-confirm', {
+        state: { ...challenge, email: address, purpose: 'login' },
+      });
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setPending(false);
+    }
   };
 
   return (
@@ -29,7 +45,7 @@ export const LoginPage = () => {
       footerLinkText="Зарегистрироваться"
       footerLinkTo="/register"
     >
-      <form className="auth-form" onSubmit={handleSubmit} noValidate>
+      <form className="auth-form" onSubmit={handleSubmit}>
         <Input
           id="login-email"
           label="ЭЛЕКТРОННАЯ ПОЧТА"
@@ -44,26 +60,16 @@ export const LoginPage = () => {
         <Input
           id="login-password"
           label="ПАРОЛЬ"
-          labelAction={
-            <Link to="/forgot-password" className="auth-switch-link" style={{ fontSize: '12px' }}>
-              Забыли пароль?
-            </Link>
-          }
           type="password"
-          placeholder="Не менее 8 символов"
+          placeholder="Не менее 12 символов"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           autoComplete="current-password"
         />
 
-        <Checkbox
-          label="Запомнить меня на этом устройстве"
-          checked={rememberMe}
-          onChange={(e) => setRememberMe(e.target.checked)}
-        />
-
-        <Button type="submit" variant="accent">
+        {error && <p className="form-error-text" role="alert">{error}</p>}
+        <Button type="submit" variant="accent" disabled={pending}>
           <span>Войти в аккаунт</span>
           <Icon name="arrow-right" size={16} />
         </Button>
@@ -72,7 +78,7 @@ export const LoginPage = () => {
           <span>ИЛИ</span>
         </div>
 
-        <Button type="button" variant="social">
+        <Button type="button" variant="social" disabled>
           <span className="google-icon" aria-hidden="true">G</span>
           <span>Продолжить с Google</span>
         </Button>
