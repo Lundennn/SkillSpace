@@ -1,3 +1,5 @@
+import { OnboardingPage } from './pages/OnboardingPage/OnboardingPage';
+import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 import { useState } from 'react';
 import { AccountPage } from './pages/AccountPage/AccountPage';
 import { BrowserRouter, HashRouter, Routes, Route, Navigate } from 'react-router-dom';
@@ -28,6 +30,9 @@ function App() {
           path="/email-confirmed"
           element={<EmailConfirmationSuccessfulPage />}
         />
+        <Route path="/onboarding" element={<OnboardingPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/profile" element={<DashboardPage profileOnly />} />
         <Route path="/account" element={<AccountPage session={session} onSignOut={setSession} />} />
         <Route path="/2fa" element={<TwoFactorPage />} />
 

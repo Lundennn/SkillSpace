@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { listSessions, logout } from '../../auth/api';
 import { CenteredLayout } from '../../components/layout/CenteredLayout';
 import { Button } from '../../components/ui/Button';
@@ -51,6 +51,8 @@ export function AccountPage({ session, onSignOut }) {
         {verified && <p className="success-card-description">{session.email}</p>}
         {!verified && !error && <p role="status">Проверяем сессию…</p>}
         {error && <p className="form-error-text" role="alert">{error}</p>}
+        {verified && <Link className="auth-switch-link" to="/onboarding">Настроить профиль</Link>}
+        {verified && <Link className="auth-switch-link" to="/dashboard">Открыть обзор</Link>}
         <Button variant="accent" disabled={pending} onClick={handleLogout}>Выйти</Button>
       </div>
     </CenteredLayout>

@@ -7,7 +7,7 @@ const team = [
   ['Вячеслав', 'Разработчик'],
 ];
 
-export function SiteFooter() {
+export function SiteFooter({ socialIcon }) {
   return (
     <footer className="site-width site-footer" id="contacts">
       <div className="site-footer__contact">
@@ -18,7 +18,7 @@ export function SiteFooter() {
         <h2>Наши соцсети</h2>
         <ul>
           {team.map(([name, role]) => (
-            <li key={name}><span aria-hidden="true">ᴠκ</span>{name}<br />{role}</li>
+            <li key={name}><span aria-hidden="true">{socialIcon ? <img src={socialIcon} alt="" /> : 'ᴠκ'}</span>{name}<br />{role}</li>
           ))}
         </ul>
       </div>
